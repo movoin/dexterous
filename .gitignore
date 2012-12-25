@@ -1,3 +1,10 @@
-assets/
-protected/runtime/
-themes/classic/views/
+# files
+*-local.php
+*.sublime-project
+*.sublime-workspace
+
+# dirs
+/public/assets/*
+/public/uploads/*
+/runtime/log/*
+/runtime/cache/*
