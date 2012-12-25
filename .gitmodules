@@ -1,3 +1,0 @@
-[submodule "vendor/yii"]
-	path = vendor/yii
-	url = https://github.com/movoin/yii.git
