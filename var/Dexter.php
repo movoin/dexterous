@@ -18,17 +18,17 @@ defined('DS')           or define('DS', DIRECTORY_SEPARATOR);
 /* 定义根目录 */
 defined('ROOT_PATH')    or define('ROOT_PATH', dirname(dirname(__FILE__)));
 /* 定义公开目录 */
-defined('PUBLIC_PATH')  or define('PUBLIC_PATH', ROOT_PATH.DS.'public');
+defined('PUBLIC_PATH')  or define('PUBLIC_PATH', ROOT_PATH.'/public');
 /* 定义用户目录 */
-defined('USR_PATH')     or define('USR_PATH', ROOT_PATH.DS.'usr');
+defined('USR_PATH')     or define('USR_PATH', ROOT_PATH.'/usr');
 /* 定义系统目录 */
-defined('VAR_PATH')     or define('VAR_PATH', ROOT_PATH.DS.'var');
+defined('VAR_PATH')     or define('VAR_PATH', ROOT_PATH.'/var');
 /* 定义系统目录 */
-defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH.DS.'runtime');
+defined('RUNTIME_PATH') or define('RUNTIME_PATH', ROOT_PATH.'/runtime');
 /* 定义 Vendor 目录 */
-defined('VENDOR_PATH')  or define('VENDOR_PATH', ROOT_PATH.DS.'vendor');
+defined('VENDOR_PATH')  or define('VENDOR_PATH', ROOT_PATH.'/vendor');
 /* 定义 Yii 目录 */
-defined('YII_PATH')     or define('YII_PATH', VENDOR_PATH.DS.'yii');
+defined('YII_PATH')     or define('YII_PATH', VENDOR_PATH.'/yii/framework');
 
 abstract class Dexter
 {
