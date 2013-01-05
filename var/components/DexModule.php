@@ -117,4 +117,3 @@ abstract class DexModule extends CWebModule
         return true;
     }
 }
-

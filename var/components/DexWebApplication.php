@@ -148,4 +148,3 @@ class DexWebApplication extends CWebApplication
         Yii::setPathOfAlias('dexter', VAR_PATH);
     }
 }
-

@@ -41,4 +41,3 @@ class DexAssetsBehavior extends CBehavior
         return $this->_assetsUrl;
     }
 }
-

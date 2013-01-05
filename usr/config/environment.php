@@ -5,8 +5,8 @@
  * @copyright  Copyright (c) 2006 - 2012 Movoin Studio. <http://www.movoin.com>
  * @license    GNU General Public License 2.0
  * @author     Allen <movoin@gmail.com>
- * @package    application
- * @category   config
+ * @package    config
+ * @category   environment
  * @version    $Id$
  * @since 1.0
  */
@@ -14,7 +14,7 @@
 /* vim: set expandtab softtabstop=4 tabstop=4 shiftwidth=4: */
 
 return array(
-    'name' => 'OCPM',
+    'name' => 'Dexterous',
     'basePath' => USR_PATH,
     'runtimePath' => RUNTIME_PATH,
     'preload' => array('log'),
@@ -38,4 +38,3 @@ return array(
         )
     )
 );
-
