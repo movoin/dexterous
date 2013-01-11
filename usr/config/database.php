@@ -5,8 +5,8 @@
  * @copyright  Copyright (c) 2006 - 2012 Movoin Studio. <http://www.movoin.com>
  * @license    GNU General Public License 2.0
  * @author     Allen <movoin@gmail.com>
- * @package    application
- * @category   config
+ * @package    config
+ * @category   database
  * @version    $Id$
  * @since 1.0
  */
@@ -22,11 +22,10 @@ return array(
             'password'              => '123456',
             'charset'               => 'utf8',
             'schemaCachingDuration' => 84600,
-            'schemaCacheID'         => 'db.schema.cache',
+            'schemaCacheID'         => 'dex.schema.cache',
             'queryCachingDuration'  => 30,
-            'queryCacheID'          => 'db.query.cache',
+            'queryCacheID'          => 'dex.query.cache',
             'tablePrefix'           => 'dex_'
         )
     )
 );
-

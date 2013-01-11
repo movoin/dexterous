@@ -65,15 +65,9 @@ abstract class Dexter
             self::configration();
             self::$_app = Yii::createApplication('DexWebApplication', self::$_config);
             Yii::app()->setComponent('cache', self::$_cache);
-            unset(self::$_cache);
             Yii::trace('Dexterous is runing');
         } else {
-            $config = include USR_PATH . '/config/database.php';
-            self::$_app = Yii::createConsoleApplication(CMap::mergeArray(array(
-                'basePath' => VAR_PATH,
-                'runtimePath' => RUNTIME_PATH),
-            $config));
-            unset($config);
+            self::$_app = Yii::createConsoleApplication(self::getConsoleConfig());
             Yii::trace('Dexterous console is runing');
         }
         Yii::trace('Run as '.(self::$_debug ? 'debug mode' : 'deploy mode'));
@@ -109,7 +103,7 @@ abstract class Dexter
             $modules = array();
             $dirs = new DirectoryIterator(USR_PATH.'/modules');
             foreach($dirs as $dir) {
-                if($dir->isDir() && !$dir->isDot() && $dir->__toString !== 'gii')
+                if($dir->isDir() && !$dir->isDot() && $dir->__toString() !== 'gii')
                     $modules[] = $dir->__toString();
             }
             unset($dirs);
@@ -162,13 +156,49 @@ abstract class Dexter
     }
 
     /**
+     * 获得配置信息
+     *
+     * @static
+     * @access public
+     * @return array
+     */
+    public static function getConsoleConfig()
+    {
+        $files = array(
+            USR_PATH.'/config/develop',
+            USR_PATH.'/config/console',
+            USR_PATH.'/config/database'
+        );
+
+        $config = array();
+        foreach ($files as $file) {
+            $filename = str_replace('/', DS, $file);
+            if (!is_file($filename.'.php'))
+                continue;
+            else {
+                if (is_file($filename.'-local.php')) {
+                    if (php_sapi_name() != 'cli' && $_SERVER['REMOTE_ADDR'] !== '127.0.0.1')
+                        continue;
+                    $filename = $filename.'-local';
+                }
+            }
+            $configfile = include $filename.'.php';
+            $config = CMap::mergeArray($configfile, $config);
+            unset($configfile);
+        }
+        unset($files);
+
+        return $config;
+    }
+
+    /**
      * 注册 Dexterous 核心组件
      *
      * @static
      * @access private
      * @return void
      */
-    private static function registerCoreComponents()
+    public static function registerCoreComponents()
     {
         Yii::$classMap = array_map(function ($path) {
             return realpath(VAR_PATH.DS.$path);
@@ -180,9 +210,12 @@ abstract class Dexter
      */
     private static $_coreComponents = array(
         'DexWebApplication'       => 'components/DexWebApplication.php',
+        'DexAdminController'      => 'components/DexAdminController.php',
+        'DexFrontController'      => 'components/DexFrontController.php',
         'DexController'           => 'components/DexController.php',
         'DexEvent'                => 'components/DexEvent.php',
         'DexModule'               => 'components/DexModule.php',
+        'DexModel'                => 'components/DexModel.php',
         'DexPlugin'               => 'components/DexPlugin.php',
         'DexPluginManager'        => 'components/DexPluginManager.php',
         'DexSite'                 => 'components/DexSite.php',

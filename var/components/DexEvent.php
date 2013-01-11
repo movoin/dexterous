@@ -42,4 +42,3 @@ class DexEvent extends CEvent
         return $this->_model;
     }
 }
-

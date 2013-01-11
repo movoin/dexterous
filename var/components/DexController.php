@@ -73,4 +73,3 @@ abstract class DexController extends CController
         throw new CHttpException(403, Yii::t('dexter', 'Forbidden!'));
     }
 }
-

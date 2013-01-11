@@ -46,4 +46,3 @@ class DexAttributeBehavior extends CBehavior
     {
     }
 }
-

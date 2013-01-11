@@ -39,4 +39,3 @@ function dump($vals)
 {
     CVarDumper::dump($vals);
 }
-
